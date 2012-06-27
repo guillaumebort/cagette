@@ -70,9 +70,13 @@ class Cageot[A,ID](implicit identifier: Identifier[A,ID]) {
 	}
 
 	def reset() {
+		reset(initialData)
+	}
+
+	def reset(withItems: Seq[A]) {
 		clear()
 		counter.set(0)
-		store ++= initialData
+		store ++= withItems
 	}
 
 	def size: Long = {

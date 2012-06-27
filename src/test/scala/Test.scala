@@ -28,7 +28,12 @@ object Project extends Cageot[Project,Long] {
 
 class CagetteSpec extends Specification {
 
+	sequential; isolated
+	
 	"Testing the Cageot" should {
+
+		User.reset()
+		Project.reset()
 
 		"find all" in {
 			User.findAll() must have size(3)
@@ -36,7 +41,7 @@ class CagetteSpec extends Specification {
 
 	  	"find User by email" in {
 	   		User.findById("bob@gmail.com") must beSome.which(_.name == "Bob D.")
-	    	User.findById("kiki@gmail.com") must beNone
+			User.findById("kiki@gmail.com") must beNone
 	  	}
 
 	  	"find User by name like" in {
@@ -57,6 +62,25 @@ class CagetteSpec extends Specification {
 	  		val bob = "bob@gmail.com"
 	  		Project.findBy(project => project.owner == bob || project.members.contains(bob)) must have size(1)
 	  	}
+
+	  	"create a user" in {
+			User.findAll() must have size(3)
+			User.save(User("toto@gmail.com", "Toto D."))
+			User.findAll() must have size(4)
+		}
+
+		"update a user" in {
+			User.findAll() must have size(3)
+			User.save(User("bob@gmail.com", "Bob M."))
+			User.findAll() must have size(3)
+			User.findById("bob@gmail.com") must beSome.which(_.name == "Bob M.")
+		}
+
+		"delete some projects" in {
+			Project.findAll() must have size(2)
+			Project.delete(_.members.isEmpty)
+			Project.findAll() must have size(1)
+		}
 	  
 	}
 
