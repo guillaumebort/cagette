@@ -1,6 +1,19 @@
 package cagette
 
-trait Cageot[A <: {def id:ID},ID] {
+// --- Identifier stuff
+
+@scala.annotation.implicitNotFound(
+  "There is no `id:${ID}` defined for type ${A}.\nEither create one, or define the identifier yourself using Cageot[${A},${ID}]()(Identifier(_.yourIdField))"
+)
+case class Identifier[A,ID](of: A => ID)
+
+object Identifier {
+	implicit def byConvention[A <: {def id:ID},ID] = Identifier[A,ID](o => o.id)
+}
+
+// --- Cageot
+
+class Cageot[A,ID](implicit identifier: Identifier[A,ID]) {
 
 	sealed trait Pagination
 	case class Page(page: Int, size: Int = 25) extends Pagination
@@ -11,7 +24,7 @@ trait Cageot[A <: {def id:ID},ID] {
 	// -- Operations
 
 	def findById(id: ID): Option[A] = {
-		store.find(item => item.id == id)
+		store.find(item => identifier.of(item) == id)
 	}
 
 	def findAll(pagination: Pagination = Full): Seq[A] = {
@@ -35,11 +48,11 @@ trait Cageot[A <: {def id:ID},ID] {
 	}
 
 	def delete(p: A => Boolean) {
-		delete(findBy(p).map(_.id))
+		delete(findBy(p).map(identifier.of))
 	}
 
 	def save(item: A): A = {
-		delete(item.id)
+		delete(identifier.of(item))
 		store += item
 		item
 	}
@@ -54,6 +67,12 @@ trait Cageot[A <: {def id:ID},ID] {
 
 	def clear() {
 		store.clear()
+	}
+
+	def reset() {
+		clear()
+		counter.set(0)
+		store ++= initialData
 	}
 
 	def size: Long = {

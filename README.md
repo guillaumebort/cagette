@@ -116,6 +116,15 @@ or batch delete using a predicate as:
 User.delete(_.groups.contains("archived"))
 ```
 
+## Avoid the evil `id` field
+
+If you don't want to artificially specify an `id` field in your case class, you can still provide your own `Identifier` instance when creating your `Cageot`:
+
+```scala
+case class User(email: String, groups: Seq[String])
+object User extends Cageot[User,String]()(Identifier(_.email)) // Specify the identifier as `email`
+```
+
 ## Using with Play framework
 
 You can directly use this for prototyping with http://www.playframework.org. Just add the resolver and library dependency to your `Build.scala` file, and start defining your model. The `initialData` set will be applied automatically at startup and each time your code change.
