@@ -70,7 +70,7 @@ While defining your `Cageot` you can define the initial data set it will contain
 object User extends cagette.Cageot[User,Long] {
 	
 	override def initialData = Seq(
-		User(1, "bob@gmail.com", groups = Seq("admin,user")),
+		User(1, "bob@gmail.com", groups = Seq("admin", "user")),
 		User(2, "kiki@gmail.com", groups = Seq("user")),
 		User(3, "toto@gmail.com", groups = Nil),
 	)
@@ -78,7 +78,43 @@ object User extends cagette.Cageot[User,Long] {
 }
 ```
 
-## And even more...
+## Updating data
+
+### save will insert a new instance
+
+If you want to store a new instance into your `Cageot`, just use the `save` operation as:
+
+```scala
+User.save( 
+  User(99, "coco@gmail.com", groups = Seq("user")) 
+)
+```
+
+### but save will also update an existing instance
+
+If the store already contains an instance with the same __id__, this instance will just be udpated:
+
+```scala
+User.findById(theIdRetrievedFromTheRequest).map { user =>
+	User.save(user.copy(groups = (user.groups :+ "admin").distinct ))
+}
+```
+
+### then you can delete them later
+
+You can either delete by using the __id__ of the instances you want to remove as:
+
+```scala
+User.delete(theIdRetrievedFromTheRequest)
+```
+
+or batch delete using a predicate as:
+
+```scala
+User.delete(_.groups.contains("archived"))
+```
+
+## Bonus
 
 Check the code source and find secret features like __pagination__ and __autoincrement__ for domain class identifiers.
 
