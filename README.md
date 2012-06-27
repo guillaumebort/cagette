@@ -18,9 +18,9 @@ libraryDependencies += "guillaume.bort" %% "cagette" % "0.1"
 
 ## Using – as easy as 1,2,3
 
-### 1. Create your domain class:
+### 1. Create your domain class with an `id` field:
 
-Let's try with a `User` class with an `id` field of any type:
+Let's try with a `User` class:
 
 ```scala
 case class User(id: Long, email: String, groups: Seq[String])
