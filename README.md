@@ -107,7 +107,7 @@ User.findOneBy(_.email == "kiki@gmail.com").map { user =>
 You can either delete by using the __id__ of the instances you want to remove as:
 
 ```scala
-User.delete(theIdRetrievedFromTheRequest)
+User.delete(88)
 ```
 
 or batch delete using a predicate as:
@@ -116,7 +116,7 @@ or batch delete using a predicate as:
 User.delete(_.groups.contains("archived"))
 ```
 
-## Avoid the evil `id` field
+## How to avoid the evil `id` field
 
 If you don't want to artificially specify an `id` field in your case class, you can still provide your own `Identifier` instance when creating your `Cageot`:
 
