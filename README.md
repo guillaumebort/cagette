@@ -116,7 +116,7 @@ User.delete(_.groups.contains("archived"))
 
 ## Using with Play framework
 
-You can directly use this for prototyping any [[Play 2.0 application|http://www.playframework.org]]. Just add the resolver and library dependency to your `Build.scala` file, and start defining your model. The `initialData` set will be applied automatically at startup and each time your code change.
+You can directly use this for prototyping any [Play 2.0 application|http://www.playframework.org]. Just add the resolver and library dependency to your `Build.scala` file, and start defining your model. The `initialData` set will be applied automatically at startup and each time your code change.
 
 ## Bonus
 
