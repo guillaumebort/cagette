@@ -4,7 +4,7 @@ import sbt.Keys._
 object CagetteBuild extends Build {
 
 	val main = Project(id = "cagette", base = file(".")).settings(
-		version := "0.2-SNAPSHOT",
+		version := "0.3-SNAPSHOT",
 		organization := "guillaume.bort",
 
 		libraryDependencies += "org.specs2" %%   "specs2" % "1.9" % "test",

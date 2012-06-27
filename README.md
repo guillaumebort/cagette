@@ -15,7 +15,7 @@ resolvers += "Guillaume Bort" at "http://guillaume.bort.fr/repository"
 Add the library dependency:
 
 ```scala
-libraryDependencies += "guillaume.bort" %% "cagette" % "0.1"
+libraryDependencies += "guillaume.bort" %% "cagette" % "0.2"
 ```
 
 ## Using – as easy as 1,2,3
