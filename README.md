@@ -1,6 +1,8 @@
 # Cagette
 
-> Cagette is a quick and dirty data store for prototyping. It allows to focus on designing your domain model, business rules, screens, user interactions, batch, reports, ... without bothering about how your data will eventually be persisted.
+Cagette is a quick and dirty data store for prototyping. It allows to focus on designing your domain model, business rules, screens, user interactions, batch, reports, ... without bothering about how your data will eventually be persisted.
+
+> "Cagette saved my hackday" [Mr. Speaker](http://www.mrspeaker.net/)
 
 ## Setting up with sbt
 
