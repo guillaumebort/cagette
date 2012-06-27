@@ -26,7 +26,7 @@ Let's try with a `User` class with an `id` field of any type:
 case class User(id: Long, email: String, groups: Seq[String])
 ```
 
-### 2. Create a `Cageot[DomainType,IdType]` to store the `User` instances:
+### 2. Create a `Cageot[DomainType,IdType]`:
 
 We usually name the `Cageot` with the same name as the domain class:
 
@@ -34,7 +34,7 @@ We usually name the `Cageot` with the same name as the domain class:
 object User extends cagette.Cageot[User,Long]
 ```
 
-### 3. Query your cagette using Scala functions
+### 3. Query the cageot using Scala functions
 
 The `Cageot` type provide some convenient higher order query functions you can use directly:
 
