@@ -38,7 +38,7 @@ object User extends cagette.Cageot[User,Long]
 
 ### 3. Query the cageot using Scala functions
 
-The `Cageot` type provide some convenient higher order query functions you can use directly:
+The `Cageot` type provides convenient higher order query functions you can use directly:
 
 #### findAll()
 
