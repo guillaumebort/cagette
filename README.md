@@ -88,7 +88,7 @@ If you want to store a new instance into your `Cageot`, just use the `save` oper
 
 ```scala
 User.save( 
-  User(99, "coco@gmail.com", groups = Seq("user")) 
+  User(88, "coco@gmail.com", groups = Seq("user")) 
 )
 ```
 
