@@ -82,4 +82,4 @@ object User extends cagette.Cageot[User,Long] {
 
 Check the code source and find secret features like __pagination__ and __autoincrement__ for domain class identifiers.
 
-Enjoy!
+__Enjoy!__
