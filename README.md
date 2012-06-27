@@ -1,4 +1,6 @@
-# Cagette, the quick and dirty data store for prototyping
+# Cagette
+
+> Cagette is a quick and dirty data store for prototyping
 
 ## Setting up with sbt
 
