@@ -97,7 +97,7 @@ User.save(
 If the store already contains an instance with the same __id__, this instance will just be udpated:
 
 ```scala
-User.findById(theIdRetrievedFromTheRequest).map { user =>
+User.findOneBy(_.email == "kiki@gmail.com").map { user =>
 	User.save(user.copy(groups = (user.groups :+ "admin").distinct ))
 }
 ```
