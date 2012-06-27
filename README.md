@@ -49,7 +49,7 @@ val allusers: Seq[User] = User.findAll()
 #### findById(id: IdType)
 
 ```scala
-val maybeUser: Option[User] = User.findById(100)
+val maybeUser: Option[User] = User.findById(88)
 ```
 
 #### findOneBy(predicate: DomainType => Boolean)
