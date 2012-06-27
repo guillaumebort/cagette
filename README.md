@@ -120,6 +120,6 @@ You can directly use this for prototyping any http://www.playframework.org. Just
 
 ## Bonus
 
-Check the code source and find secret features like __pagination__ and __autoincrement__ for domain class identifiers.
+Check the source code and find secret features like __pagination__ and __autoincrement__ for domain class identifiers.
 
 __Enjoy!__
