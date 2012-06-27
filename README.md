@@ -74,7 +74,7 @@ object User extends cagette.Cageot[User,Long] {
 	override def initialData = Seq(
 		User(1, "bob@gmail.com", groups = Seq("admin", "user")),
 		User(2, "kiki@gmail.com", groups = Seq("user")),
-		User(3, "toto@gmail.com", groups = Nil),
+		User(3, "toto@gmail.com", groups = Nil)
 	)
 
 }
